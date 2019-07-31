@@ -1,24 +1,38 @@
 import React from 'react';
 
 class SearchBar extends React.Component {
-  state = { term: '' };
+    
+    constructor(props) {
+        super(props);
+        this.state = { term: '' };
+
+        // bind handle function to the class
+        this.handleMovieName = this.handleMovieName.bind(this);
+    }  
+  
 
   onFormSubmit = event => {
     event.preventDefault();
-    this.props.onSubmit(this.state.term);
   };
+
+  
+  handleMovieName(e){
+    this.setState({term: e.target.value}, function () {
+        this.props.onSubmit(this.state.term);
+    });
+  }
 
   render() {
     return (
       <div className="ui segment">
-        <form onSubmit={this.onFormSubmit} className="ui form">
+        <form className="ui form">
           <div className="field">
             <h3>Movies Search</h3>
             <input
-              placeholder="Type the name of your favorite movie..."
               type="text"
+              placeholder="Type the name of your favorite movie..."
               value={this.state.term}
-              onChange={e => this.setState({ term: e.target.value })}
+              onChange={this.handleMovieName}
             />
           </div>
         </form>

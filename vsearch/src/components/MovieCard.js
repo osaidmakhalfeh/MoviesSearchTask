@@ -9,7 +9,7 @@ class MovieCard extends React.Component {
         <div className="item movie">
             <img className="ui avatar image movie-img" src={Poster} alt=":)" />
             <div className="movie-content">
-                <div class="header"><h4>{Title}</h4></div>
+                <div className="header"><h4>{Title}</h4></div>
                 <p>{Year}-{Type}</p>
             </div>
         </div>

@@ -5,9 +5,9 @@
 
 .movie{
     margin: 0px 0px 8px 0px;
-    padding: 5px 0px 0px 0px;
+    padding: 0px 0px 5px 0px;
     cursor: pointer;
-    border-top: 1px solid rgba(34,36,38,.15);
+    border-bottom: 1px solid rgba(34,36,38,.15);
 }
 
 .movie-img{
