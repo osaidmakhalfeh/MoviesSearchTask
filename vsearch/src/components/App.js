@@ -5,7 +5,7 @@ import MoviesList from './MoviesList';
 
 class App extends React.Component {
   
-  state = { movies: [], loading: false };
+  state = { movies: null, loading: false };
 
   // This function called every time the searchBar component get Changes in its Text
   onSearchSubmit = async term => {
@@ -33,12 +33,14 @@ class App extends React.Component {
         return(
             <div  className="ui active inline loader"></div>
         );
-    }
-
-    if(this.state.movies !== undefined){
+    }else if(this.state.movies !== undefined && this.state.movies !== null){
         return(
             <MoviesList movies={this.state.movies} />
         );
+    }else {
+      return <div className="ui segment">
+        <p>nothing to show!</p>
+      </div>
     }
   }
 

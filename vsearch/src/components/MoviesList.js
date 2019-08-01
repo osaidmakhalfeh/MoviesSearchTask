@@ -11,7 +11,9 @@ const MoviesList = props => {
     return <MovieCard key={movie.imdbID} movie={movie} />;
   });
 
-  return <div className="movies-list-flex">{movies}</div>;
+  return <div className="ui segment">
+    <div className="movies-list-flex">{movies}</div>
+  </div>;
 };
 
 export default MoviesList;
