@@ -5,32 +5,33 @@ import MoviesList from './MoviesList';
 
 class App extends React.Component {
   
-    state = { movies: [], loading: false };
+  state = { movies: [], loading: false };
 
+  // This function called every time the searchBar component get Changes in its Text
   onSearchSubmit = async term => {
 
      this.setState({loading: true});
 
      await omdbapi.get('', {
       
-      // from api docs, s = Movie title to search for, return list.
+      // from api docs, s = Movie title to search for, return JSON-list.
       params: { s: term } })
-
+      
+      // if get response
       .then(resp => this.setState({movies: resp.data.Search, loading: false}))
 
+      // catch errors if founds
       .catch(( error ) => {   // Status code is not 200
-
         console.log(error);
         this.setState({loading: false});
     }); 
   };
 
+  //This function return the list of Movies if not found it should show a Spinner to the user
   _renderMoviesList(){
     if(this.state.loading){
         return(
-            <div  className="ui active inline loader">
-             
-            </div>
+            <div  className="ui active inline loader"></div>
         );
     }
 
